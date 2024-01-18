@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// model User {
+//   id    Int     String @id @default(uuid())
+//   email String  @unique
+//   name  String?
+// }
+
+model Product {
+  id      String   @id @default(uuid())
+  name    String   @unique
+  color   String
+  size    String
+  price   Int
+  baskets Basket[]
+  orders  Order[]
+  // @@index([name])
+  // @@index([color])
+  // @@index([size])
+}
+
+model Basket {
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  user      String // TODO: optional - if time, add user table
+  products  Product[] // implicit one-to-many TODO: make explicit
+}
+
+model Order {
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  user      String // TODO: optional - if time, add user table
+  products  Product[] // implicit one-to-many TODO: make explicit
+}
