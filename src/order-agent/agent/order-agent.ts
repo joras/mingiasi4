@@ -28,7 +28,7 @@ export async function createOrderAgent(
   const model = new ChatOpenAI({
     //modelName: 'gpt-3.5-turbo-1106',
     modelName: 'gpt-4-1106-preview',
-    temperature: 0.2,
+    temperature: 0,
     openAIApiKey: env.OPENAI_API_KEY,
   });
 
@@ -47,6 +47,7 @@ export async function createOrderAgent(
         logger.log(`calling find_product_by_description("${description}")`);
         try {
           const result = await productService.productByDescription(description);
+          logger.log(result);
           return JSON.stringify(result);
         } catch (e) {
           logger.error(e);
