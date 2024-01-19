@@ -44,6 +44,9 @@ CREATE TABLE "_OrderToProduct" (
 -- CreateIndex
 CREATE UNIQUE INDEX "Product_name_key" ON "Product"("name");
 
+-- MANUAL INDEX
+CREATE INDEX "Product_fulltext_tsvec" ON "Product" USING GIST (to_tsvector('english', size || ' ' || color || ' ' || name));
+
 -- CreateIndex
 CREATE UNIQUE INDEX "_BasketToProduct_AB_unique" ON "_BasketToProduct"("A", "B");
 

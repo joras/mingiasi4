@@ -38,6 +38,7 @@ function createRandomToys(count: number) {
     'Train',
     'Robot',
     'Unicorn',
+    'Rocket',
   ];
   const adjectives = [
     'Cuddly',
@@ -89,10 +90,12 @@ function createRandomToys(count: number) {
   };
 
   const uniqueNames = generateUniqueNames(count, toyTypes, adjectives);
-  return uniqueNames.map((name) => ({
-    name,
-    color: getRandomItem(colors),
-    size: getRandomItem(sizes),
-    price: getRandomInt(priceRange.min, priceRange.max),
-  }));
+  return uniqueNames.map((name) => {
+    return {
+      name,
+      color: getRandomItem(colors),
+      size: getRandomItem(sizes),
+      price: getRandomInt(priceRange.min, priceRange.max),
+    };
+  });
 }

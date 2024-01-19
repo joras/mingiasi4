@@ -24,9 +24,8 @@ model Product {
   price   Int
   baskets Basket[]
   orders  Order[]
-  // @@index([name])
-  // @@index([color])
-  // @@index([size])
+
+  // fulltext index is manual, Prisma has a 2 year old bug
 }
 
 model Basket {
@@ -34,7 +33,7 @@ model Basket {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   user      String // TODO: optional - if time, add user table
-  products  Product[] // implicit one-to-many TODO: make explicit
+  products  Product[]
 }
 
 model Order {
@@ -42,5 +41,5 @@ model Order {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   user      String // TODO: optional - if time, add user table
-  products  Product[] // implicit one-to-many TODO: make explicit
+  products  Product[]
 }

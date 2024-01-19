@@ -1,15 +1,18 @@
-
-
 todo:
-
-- rest api for chat interface
-- database setup
-  - create data
+- ~~rest api for chat interface~~
+- ~~database setup~~
+  - ~~create data~~
+  - ~~fuzzy search ~~
 - langchain
-   - agent
-
-
-
+   - ~~agent~~
+   - ~~session~~
+   - ~~need memory~~
+- features
+  - ~~product search~~
+  - ~~add to basket~~
+  - ~~create order from basket~~
+  - ~~list orders with total~~
+  
 testtask:
 
 Build a LangChain project
@@ -20,23 +23,7 @@ Build a LangChain project
 5. Function to retrieve all data about user history
 6. Function to display Order confirmation
 7. Take input only user name for user identification
-Create 5 db tables
-1. Product (needs some dummy data for testing) a. id
-b. Name c. Colour d. Size e. Price
-2. Basket a. Id
-b. Timestamp
-c. User
-3. BasketProduct
-a. Id
-b. ProductId c. Price
-d. Timestamp
-4. Order
-a. Id
-b. Timestamp c. User
-5. OrderProduct a. Id
-b. OrderId
-c. ProductId d. Price
-e. Timestamp
+
 Project is tested by chat like interaction with following prompts
 1. Do you have a yellow, small “teddy bear”?
 a. answer should contain several products
