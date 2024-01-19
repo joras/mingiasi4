@@ -2,6 +2,17 @@
 /dist
 /node_modules
 
+# web stuff
+/web/node_modules
+/web/src
+/web/public
+/web/*.js
+/web/*.json
+/web/*.ts
+/web/*.md
+/web/*.html
+
+
 # Logs
 logs
 *.log

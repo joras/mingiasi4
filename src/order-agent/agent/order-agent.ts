@@ -61,7 +61,6 @@ export async function createOrderAgent(
       }),
       func: async ({ id }) => {
         logger.log(`calling add_to_basket("${id}")`);
-
         try {
           const result = await basketService.addProductToBasket(user, id);
           return JSON.stringify(result);
@@ -77,7 +76,6 @@ export async function createOrderAgent(
         try {
           logger.log(`calling products_in_basket()`);
           const result = await basketService.basket(user);
-
           return JSON.stringify(result);
         } catch (e) {
           logger.error(e);
@@ -92,7 +90,6 @@ export async function createOrderAgent(
         try {
           logger.log(`calling list_all_orders()`);
           const result = await orderService.orders(user);
-
           return JSON.stringify(result);
         } catch (e) {
           logger.error(e);
@@ -106,7 +103,6 @@ export async function createOrderAgent(
         try {
           logger.log(`calling create_order()`);
           const result = await orderService.createOrder(user);
-
           return JSON.stringify(result);
         } catch (e) {
           logger.error(e);
@@ -119,7 +115,13 @@ export async function createOrderAgent(
     [
       'system',
       `You are online sales agent, you can find products, add products to basket, show basket contents, and create orders from basket.
-      Ask confirmation before adding products to basket. A product goes first to basket and order is created from a basket. You cannot add products to order.`,
+
+      Ask confirmation before adding products to basket. A product can only be added to basket and order can only be created from a basket.
+
+      always return item id
+      
+      return well formed Markdown
+      `,
     ],
     new MessagesPlaceholder('chat_history'),
     ['human', '{input}'],
