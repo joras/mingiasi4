@@ -47,6 +47,11 @@ export async function createOrderAgent(
         logger.log(`calling find_product_by_description("${description}")`);
         try {
           const result = await productService.productByDescription(description);
+
+          if (result === undefined) {
+            return 'could not find a product';
+          }
+
           return JSON.stringify(result);
         } catch (e) {
           logger.error(e);
